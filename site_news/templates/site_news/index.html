@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>News</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Snippet</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for n in news_items %}
+            <tr>
+                <td>{{ n.date }}</td>
+                <td>{% if n.item_url %}<a href="{{ n.item_url }}">{{ n.title }}</a>{% else %}{{ n.title }}{% endif %}</td>
+                <td>{{ n.snippet }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
