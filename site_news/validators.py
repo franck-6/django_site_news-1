@@ -36,9 +36,9 @@ class ImageValidator(object):
             self.check_proportions = float(wh_proportions)
         if width and not height and wh_proportions:
             self.check_width = int(width)
-            self.check_height = int(width/wh_proportions)
+            self.check_height = int(width / wh_proportions)
         elif not width and height and wh_proportions:
-            self.check_width = int(height*wh_proportions)
+            self.check_width = int(height * wh_proportions)
             self.check_height = int(height)
         # Set comparer
         if validation_type == IMAGE_VALIDATOR_EXACT:
@@ -61,7 +61,7 @@ class ImageValidator(object):
                 raise ValidationError(_(u"La imagen debe ser {2} {0}px de alto y es de {1}px.").format(self.check_height, h, self.limit_prefix))
             elif self.check_width and self.check_height and not (self.dimension_cmp(w, self.check_width) and self.dimension_cmp(h, self.check_height)):
                 raise ValidationError(_(u"La imagen debe ser {4} {0}px x {1}px y es de {2}px x {3}px.").format(self.check_width, self.check_height, w, h, self.limit_prefix))
-            elif self.check_proportions and abs((float(w)/float(h)) - self.check_proportions) > 0.01:
+            elif self.check_proportions and abs((float(w) / float(h)) - self.check_proportions) > 0.01:
                 raise ValidationError(_(u"Las proporciones de ancho / largo de la imagen no es correcta."))
 
         if self.check_types:

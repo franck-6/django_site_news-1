@@ -3,7 +3,7 @@ import os
 
 
 setup(name='django-site-news',
-      version='1.0',
+      version='0.1.1',
       description='Simple news per site application for Django.',
       long_description=open(os.path.join(os.path.dirname(__file__), 'README.md')).read(),
       author='Maximiliano Cecilia',
