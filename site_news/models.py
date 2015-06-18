@@ -1,10 +1,10 @@
-# coding: utf8
+# -*- coding: utf-8 -*-
 from datetime import date
 
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.db import models
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from . import APP_NAME
 from .validators import ImageValidator, IMAGE_VALIDATOR_MAX
@@ -43,12 +43,19 @@ class NewsItem(models.Model):
     body = HTMLTextField(_(u"Cuerpo"), blank=True)
     date = models.DateField(_(u"Fecha"), default=date.today)
     published = models.BooleanField(_(u"Publicado"), default=True)
-    picture = models.ImageField(_(u"Foto"), blank=True, null=True,
-                                validators=[ImageValidator(width=1080, validation_type=IMAGE_VALIDATOR_MAX, allowed_types=('.png', '.jpg', )), ],
-                                upload_to=(APP_NAME + "/picture"),
-                                help_text=_(u"Usada para ilustrar la noticia. Debe ser un archivo png o jpg de 1080 px de ancho como máximo."),
-                                )
-    section = models.PositiveIntegerField(_(u"Sección"), choices=SECTION_CHOICES, default=SECTION_CHOICES[0][0])
+    picture = models.ImageField(
+        _(u"Foto"), blank=True, null=True,
+        validators=[ImageValidator(
+            width=1080,
+            validation_type=IMAGE_VALIDATOR_MAX,
+            allowed_types=('.png', '.jpg', )), ],
+        upload_to=(APP_NAME + "/picture"),
+        help_text=_(
+            u"Usada para ilustrar la noticia. " +
+            "Debe ser un archivo png o jpg de 1080 px de ancho como maximo."),
+    )
+    section = models.PositiveIntegerField(
+        _(u"Sección"), choices=SECTION_CHOICES, default=SECTION_CHOICES[0][0])
     site = models.ForeignKey(Site)
     snippet = models.CharField(_(u"Resumen"), max_length=140)
     source_url = models.URLField(_(u"URL de la fuente"), blank=True)

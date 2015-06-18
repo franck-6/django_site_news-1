@@ -1,7 +1,7 @@
-# coding: utf8
+# -*- coding: utf-8 -*-
 from django.core.exceptions import ValidationError
 from django.core.files.images import get_image_dimensions
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 IMAGE_VALIDATOR_MAX = 1
 IMAGE_VALIDATOR_EXACT = 0

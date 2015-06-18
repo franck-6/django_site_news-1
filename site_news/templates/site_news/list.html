@@ -1,0 +1,15 @@
+<!-- example template to display a list of news -->
+{% load i18n %}
+{% for n in object_list %}
+<div>
+    <h2>{% if n.item_url %}<a href="{{ n.item_url }}">{{ n.title }}</a>{% else %}{{ n.title }}{% endif %}  <small>{{ n.date }}</small></h2>
+    <p>
+        {{ n.body|safe|default:n.snippet }}
+        <a href="{% url "news-item" n.pk %}">permalink</a>
+    </p>
+
+</div>
+<br/>
+{% empty %}
+<div>{% trans "No hay noticias publicadas." %}</div>
+{% endfor %}
