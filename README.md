@@ -1,5 +1,6 @@
 Django Site News
 ====================
+[![Build Status](https://travis-ci.org/maxicecilia/django_site_news.svg)](https://travis-ci.org/maxicecilia/django_site_news)
 
 Simple django app for displaying news and/or posts. Supports custom snippets and images.
 
