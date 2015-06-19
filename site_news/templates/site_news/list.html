@@ -4,7 +4,7 @@
 <div>
     <h2>{% if n.item_url %}<a href="{{ n.item_url }}">{{ n.title }}</a>{% else %}{{ n.title }}{% endif %}  <small>{{ n.date }}</small></h2>
     <p>
-        {{ n.body|safe|default:n.snippet }}
+        {{ n.body|safe|default:n.snippet }}<br/>
         <a href="{% url "news-item" n.pk %}">permalink</a>
     </p>
 

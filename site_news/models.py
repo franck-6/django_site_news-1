@@ -26,7 +26,7 @@ class NewsItemManager(models.Manager):
             return self.order_by('-date', 'title')[:max_items]
 
     def get_latest_by_site(self, site, section=None, max_items=25):
-        qs = super(NewsItemManagerPublished, self).get_queryset().filter(site=site)
+        qs = super(NewsItemManager, self).get_queryset().filter(site=site)
         if section:
             qs = qs.filter(section=section)
         return qs.order_by('-date', 'title')[:max_items]

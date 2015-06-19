@@ -1,11 +1,16 @@
-from distutils.core import setup
 import os
+try:
+    from setuptools import setup
+except ImportError:
+    from distribute_setup import use_setuptools
+    use_setuptools()
+    from setuptools import setup
 
 
 setup(name='django-site-news',
       version='0.1.1',
       description='Simple news per site application for Django.',
-      long_description=open(os.path.join(os.path.dirname(__file__), 'README.md')).read(),
+      long_description=open(os.path.join(os.path.dirname(__file__), 'README')).read(),
       author='Maximiliano Cecilia',
       author_email='maxicecilia@gmail.com',
       url='https://github.com/maxicecilia/django_site_news/',
