@@ -3,6 +3,7 @@ from datetime import date
 
 from django.conf import settings
 from django.contrib.sites.models import Site
+from simple_classroom.apps.classroom.models import Dictation
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -57,6 +58,7 @@ class NewsItem(models.Model):
     section = models.PositiveIntegerField(
         _(u"Sección"), choices=SECTION_CHOICES, default=SECTION_CHOICES[0][0])
     site = models.ForeignKey(Site)
+    dictation = models.ForeignKey(Dictation)
     snippet = models.CharField(_(u"Resumen"), max_length=140)
     source_url = models.URLField(_(u"URL de la fuente"), blank=True)
     title = models.CharField(_(u"Título"), max_length=64)
